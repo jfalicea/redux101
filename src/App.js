@@ -10,11 +10,11 @@ function App(props){
   return(
     <Router>
       <div className="App">
-      <Route path="/" component={<NavBar />} />
-      <Route exact path="/" component={<Main />} />
-      <Route exact path="/frozen" component={<FrozenDept />} />
-      <Route exact path="/meat" component={<MeatDept />} />
-      <Route exact path="/dairy" component={<DairyDept />} />
+        <Route path="/" component={NavBar} />
+        <Route exact path="/" component={Main} />
+        <Route exact path="/frozen-dept" component={FrozenDept} />
+        <Route exact path="/meat-dept" component={MeatDept} />
+        <Route exact path="/dairy-dept" component={DairyDept} />
       </div>
     </Router>
   )
