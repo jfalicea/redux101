@@ -20,5 +20,6 @@ const seedData = [
 
 export default (state = seedData, action)=>{
     console.log("dairyReducer is running!")
+    console.log(action.type)
     return state;
 }
