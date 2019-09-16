@@ -1,8 +1,22 @@
 import React from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+import NavBar from './Component/NavBar'
+import Main from './Component/Main'
+import FrozenDept from './Component/FrozenDept'
+import MeatDept from './Component/MeatDept'
+import DairyDept from './Component/DairyDept'
 
 function App(props){
-  return(<>
-      <h1>Sanity Check</h1>
-  </>)
+  return(
+    <Router>
+      <div className="App">
+      <Route path="/" component={<NavBar />} />
+      <Route exact path="/" component={<Main />} />
+      <Route exact path="/frozen" component={<FrozenDept />} />
+      <Route exact path="/meat" component={<MeatDept />} />
+      <Route exact path="/dairy" component={<DairyDept />} />
+      </div>
+    </Router>
+  )
 }
 export default App;
