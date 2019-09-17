@@ -13,9 +13,10 @@
 
 
 
-export default ()=>{
+export default (newValue)=>{
     return{
-        type: 'updateFrozen', 
+        type: 'updateFrozen',
+        payload: newValue 
     }
 }
 

@@ -13,7 +13,7 @@ class Dairy extends React.Component{
     const dairyArray =this.props.dairyData
     const dairyDiv = dairyArray.map((product,i)=>{
       return (
-        <div key={i}>{product.food} <span>{product.quantity}</span></div>
+        <li key={i}>{product.food}.......................{product.quantity}</li>
       )
     })
     return(<>

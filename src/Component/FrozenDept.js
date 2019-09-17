@@ -8,13 +8,13 @@ import updateFrozen from '../actions/frozenInvUpdate';
 class FrozenDept extends React.Component{
   constructor(props){
     super(props);
-    this.state = {
+    // this.state = {
       
-    };
+    // };
   }
 
   render(){
-    this.props.updateFrozen();
+    this.props.updateFrozen([{}]);
     const frozenArray = this.props.frozenData;
     const frozenDiv = frozenArray.map((product, i)=>{
       return (
@@ -47,8 +47,13 @@ function mapStateToProps(state){
     return(
       bindActionCreators({
         //each property will be a local prop for this function. 
-        //each value will be a function, action creator, that will have its return value (action) sent to the dispatch
+        //each value will be a function, action creator, 
+        //that will have its return value (action) sent to the dispatch
         updateFrozen : updateFrozen
+        //updateFrozen was a regular function; however, bindActionCreator, turned it into an Action Creator. 
+        //an Action Creator is a function that returns an action. 
+        //An Action is an object that has at LEAST ONE property: type.  
+        //the dispatch will send that object to EVERY REDUCER. 
       },dispatch)
     )
   }
