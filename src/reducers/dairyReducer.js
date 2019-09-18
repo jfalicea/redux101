@@ -20,6 +20,32 @@ const seedData = [
 
 export default (state = seedData, action)=>{
     console.log("dairyReducer is running!")
-    console.log(action.type)
+    let newState = [...state]
+    if(action.type === 'updateDairy'){
+        if(action.payload.operation === "+"){   
+            newState[action.payload.indexToChange].quantity++
+        }
+        if(action.payload.operation === "-"){   
+            newState[action.payload.indexToChange].quantity--
+        }
+        return newState
+    }
+    else if(action.type === 'clearInv'){
+        return []
+    }
+    else if (action.type === 'resetInv'){
+        return state = seedData
+    }
+    else if(action.type === 'addItem-Dairy'){
+        let newState = [...state];
+        const food = action.payload.food
+        const quantity = action.payload.quantity
+        // const { food, quantity } = action.payload
+        newState.push({
+            food,
+            quantity
+        })
+        return newState
+    }
     return state;
 }

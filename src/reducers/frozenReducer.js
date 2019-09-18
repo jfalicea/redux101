@@ -25,11 +25,34 @@ const seedData = [
 
 export default (state = seedData, action)=>{
     console.log("frozenReducer is running!")
-    console.log("=======================================",action.type)
+    // console.log("=======================================",action.type)
     if(action.type === 'updateFrozen'){
-        console.log('actiontype is running')
-        return action.payload;
-    } else {
-        return state;
+        // console.log('("=======================================",actiontype is running')
+            let newState = [...state]
+            if(action.payload.operation === "+"){
+                newState[action.payload.indexToChange].quantity++
+            }else if(action.payload.operation === "-"){
+                newState[action.payload.indexToChange].quantity--;
+
     }
+        return newState 
+    }
+    else if(action.type === 'clearInv'){
+        return []
+    }
+    else if (action.type === 'resetInv'){
+        return state = seedData
+    }
+    else if(action.type === 'addItem-Frozen'){
+        let newState = [...state];
+        const food = action.payload.food
+        const quantity = action.payload.quantity
+        // const { food, quantity } = action.payload
+        newState.push({
+            food,
+            quantity
+        })
+        return newState
+    }
+    return state;
 }

@@ -3,31 +3,44 @@ import {connect} from 'react-redux';
 //in order for updateFrozen to be an action creator. we need to import 
 import {bindActionCreators} from 'redux';
 import updateFrozen from '../actions/frozenInvUpdate';
+import AddItem from './AddItem'
 
 
 class FrozenDept extends React.Component{
   constructor(props){
     super(props);
-    // this.state = {
+    this.state = {
       
-    // };
+    };
+  }
+  // componentDidMount(){
+  //   // this.props.updateFrozen([{}]);
+  // }
+
+  changeQuantity = (operation,IndexToChange)=>{
+    console.log(operation,IndexToChange)
+    this.props.updateFrozen(operation,IndexToChange) //action creator. 
   }
 
   render(){
-    this.props.updateFrozen([{}]);
     const frozenArray = this.props.frozenData;
     const frozenDiv = frozenArray.map((product, i)=>{
       return (
-        <li key={i}>{product.food}.....................{product.quantity}</li>
+        <div key={i}>
+        <h4>{product.food}.....................{product.quantity}</h4>
+        <input className="add-button" type="button" onClick={()=>{this.changeQuantity("+",i)}} value="+" />
+        <input className="add-button" type="button" onClick={()=>{this.changeQuantity("-",i)}} value="-" />
+        </div>
       )
     })
 
 
 
-    console.log("THIS", this.props.frozenData)
+    // console.log("THIS", this.props.frozenData)
     return(<>
       <h1>Frozen Department Inventory</h1>
       <ul>
+        <AddItem dept="Frozen"/> 
         {frozenDiv}
       </ul>
     </>)
